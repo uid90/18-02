@@ -13,6 +13,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    position: relative; /* Para asegurarse de que los elementos dentro se posicionen correctamente */
 }
 
 /* Centrar la imagen */
@@ -22,11 +23,13 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 20; /* Garantiza que la imagen esté por encima de los círculos */
 }
 
 .context a img {
     max-width: 80%;
     height: auto;
+    cursor: pointer;
 }
 
 /* Área con círculos */
@@ -37,6 +40,7 @@ body {
     top: 0;
     left: 0;
     overflow: hidden;
+    z-index: 10; /* Asegura que los círculos estén debajo de la imagen */
 }
 
 .circles {
