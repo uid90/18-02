@@ -7,8 +7,9 @@
   <link rel="stylesheet" media="all" href="style.css" />
 </head>
 <body>
+
 <div class="context">
-    <a href="video.html">
+    <a href="video.html" id="imageLink">
         <img src="https://i.imgur.com/x64HjuF.png" alt="Regalo" style="max-width: 100%; height: auto;">
     </a>
 </div>
@@ -27,5 +28,12 @@
         <li></li>
     </ul>
 </div>
+
+<script>
+    document.getElementById("imageLink").addEventListener("touchstart", function() {
+        window.location.href = "video.html";
+    });
+</script>
+
 </body>
 </html>
