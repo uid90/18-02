@@ -9,7 +9,7 @@
 <body>
 
 <!-- Reproductor de música de fondo oculto -->
-<audio id="background-audio" autoplay loop>
+<audio id="background-audio" loop>
     <source src="music.mp3" type="audio/mp3"> <!-- Cambia esto por la ruta de tu archivo MP3 -->
 </audio>
 
@@ -35,7 +35,19 @@
 </div>
 
 <script>
+    // Función para reproducir la música cuando el usuario toque la pantalla
+    function playMusic() {
+        const audio = document.getElementById("background-audio");
+        audio.play().catch(error => console.log("Error al reproducir audio:", error));
+    }
+
+    // Agregar evento para iniciar la música con el primer toque
+    document.body.addEventListener("touchstart", playMusic, { once: true });
+
+    // Código de animación del texto
     const textLines = [
+        "TOCA LA PANTALLA",
+        "Y LEE ESTE MENSAJE",
         "Mamá, se que nunca..",
         "te lo he dicho",
         "Pero te admiro demasiado",
