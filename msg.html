@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Texto Animado</title>
+    <link rel="stylesheet" media="all" href="msg.css" />
+</head>
+<body>
+
+<!-- Área con los círculos animados -->
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<!-- Contenedor del texto animado -->
+<div class="text-container">
+    <span id="animated-text"></span><span class="cursor">|</span>
+</div>
+
+<script>
+    const textLines = [
+        "Mamá, se que nunca..",
+        "te lo he dicho",
+        "Pero te admiro demasiado",
+        "Eres la persona más..",
+        "fuerte que conozco",
+        "Incluso en los días..",
+        "que no te sientes así",
+        "Has hecho sacrificios que..",
+        "jamas podré comprender",
+        "Renunciaste a tus sueños",
+        "Para que yo pueda..",
+        "perseguir los mios",
+        "Te vi llorar a escondidas",
+        "Pensando que yo no lo notaba",
+        "Pero siempre supe que..",
+        "tus lagrimas eran..",
+        "por darnos lo mejor",
+        "A veces soy egoista y..",
+        "olvido agradecerte las cosas",
+        "por levantarme cuando me caigo",
+        "por creer en mi",
+        "Por sostener todo un mundo..",
+        "Sobre tus hombros sin quejarte",
+        "Gracias por cada comida..",
+        "preparada con amor",
+        "Por los abrazos que sanan",
+        "Por los regaños que duelen..",
+        "Pero me hacen mejor persona",
+        "Si el amor tuviera nombre...",
+        "Llevaria el tuyo",
+        "Te quiero con todo mi ❤",
+        "Felices 48 mamá"
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    const textElement = document.getElementById("animated-text");
+
+    function typeText() {
+        if (charIndex < textLines[lineIndex].length) {
+            textElement.textContent += textLines[lineIndex][charIndex];
+            charIndex++;
+            setTimeout(typeText, 100); // Velocidad de escritura
+        } else {
+            setTimeout(eraseText, 1000); // Pausa antes de borrar
+        }
+    }
+
+    function eraseText() {
+        if (charIndex > 0) {
+            textElement.textContent = textLines[lineIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(eraseText, 50); // Velocidad de borrado
+        } else {
+            lineIndex = (lineIndex + 1) % textLines.length; // Cambiar a la siguiente línea
+            setTimeout(typeText, 500); // Pausa antes de escribir la siguiente línea
+        }
+    }
+
+    typeText();
+</script>
+
+</body>
+</html>
